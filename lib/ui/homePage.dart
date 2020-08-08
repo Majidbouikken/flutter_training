@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_app/model/product.dart';
+import 'package:flutter_app/model/productModel.dart';
 import 'components/itemCard.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,61 +11,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Product> data;
+  List<ProductModel> data;
 
   @override
   void initState() {
     super.initState();
-    data = <Product>[
-      Product(
-        'Hubot Figure',
-        'assets/img/product1.png',
-        2000,
-        Color(0xFFFEFAC4),
-      ),
-      Product(
-        'Github Figure',
-        'assets/img/product2.png',
-        1400,
-        Color(0xFFD0FFE1),
-      ),
-      Product(
-        'Hack IT sticker pack',
-        'assets/img/product5.png',
-        180,
-        Color(0xFFFFD0EE),
-      ),
-      Product(
-        'CSE Hoodie',
-        'assets/img/product3.png',
-        2500,
-        Color(0xFFD0EEFF),
-      ),
-      Product(
-        'CSE Backpack',
-        'assets/img/product4.png',
-        1800,
-        Color(0xFFD0EEFF),
-      ),
-      Product(
-        'Flutter water bottle',
-        'assets/img/product6.png',
-        780,
-        Color(0xFFDFFEB9),
-      ),
-      Product(
-        'Hubot Figure',
-        'assets/img/product1.png',
-        2000,
-        Color(0xFFECECEC),
-      ),
-      Product(
-        'Github Figure',
-        'assets/img/product2.png',
-        1400,
-        Color(0xFFD0FFE1),
-      ),
-    ];
   }
 
   @override
@@ -155,54 +105,54 @@ class _HomePageState extends State<HomePage> {
 
   List<Widget> _itemBuilder() {
     List<Widget> _list = [];
-    data = <Product>[
-      Product(
-        'Hubot Figure',
-        'assets/img/product1.png',
-        2000,
-        Color(0xFFFEFAC4),
+    data = <ProductModel>[
+      ProductModel(
+        name: 'Hubot Figure',
+        image: 'assets/img/product1.png',
+        price: 2000,
+        color: Color(0xFFFEFAC4),
       ),
-      Product(
-        'Github Figure',
-        'assets/img/product2.png',
-        1400,
-        Color(0xFFD0FFE1),
+      ProductModel(
+        name: 'Github Figure',
+        image: 'assets/img/product2.png',
+        price: 1400,
+        color: Color(0xFFD0FFE1),
       ),
-      Product(
-        'Hack IT sticker pack',
-        'assets/img/product5.png',
-        180,
-        Color(0xFFFFD0EE),
+      ProductModel(
+        name: 'Hack IT sticker pack',
+        image: 'assets/img/product5.png',
+        price: 180,
+        color: Color(0xFFFFD0EE),
       ),
-      Product(
-        'CSE Hoodie',
-        'assets/img/product3.png',
-        2500,
-        Color(0xFFE8E9FF),
+      ProductModel(
+        name: 'CSE Hoodie',
+        image: 'assets/img/product3.png',
+        price: 2500,
+        color: Color(0xFFE8E9FF),
       ),
-      Product(
-        'CSE Backpack',
-        'assets/img/product4.png',
-        1800,
-        Color(0xFFD0EEFF),
+      ProductModel(
+        name: 'CSE Backpack',
+        image: 'assets/img/product4.png',
+        price: 1800,
+        color: Color(0xFFD0EEFF),
       ),
-      Product(
-        'Flutter water bottle',
-        'assets/img/product6.png',
-        780,
-        Color(0xFFDFFEB9),
+      ProductModel(
+        name: 'Flutter water bottle',
+        image: 'assets/img/product6.png',
+        price: 780,
+        color: Color(0xFFDFFEB9),
       ),
-      Product(
-        'Hubot Figure',
-        'assets/img/product1.png',
-        2000,
-        Color(0xFFFED8B9),
+      ProductModel(
+        name: 'Hubot Figure',
+        image: 'assets/img/product1.png',
+        price: 2000,
+        color: Color(0xFFFED8B9),
       ),
-      Product(
-        'Github Figure',
-        'assets/img/product2.png',
-        1400,
-        Color(0xFFECECEC),
+      ProductModel(
+        name: 'Github Figure',
+        image: 'assets/img/product2.png',
+        price: 1400,
+        color: Color(0xFFECECEC),
       ),
     ];
     for (int i = 0; i < data.length; i++) {
