@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app/model/productModel.dart';
 import 'components/itemCard.dart';
+import 'addProductPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -21,6 +22,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => AddProductPage(),
+          ));
+        },
+        child: Icon(Icons.add),
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(
@@ -32,7 +41,6 @@ class _HomePageState extends State<HomePage> {
               children: _itemBuilder(),
             ),
 
-            // App bar
             ClipRect(
               child: Container(
                 height: 88,
