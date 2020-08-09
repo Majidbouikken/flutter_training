@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_app/controllers/addProductController.dart';
 
 class AddProductPage extends StatefulWidget {
   @override
@@ -61,7 +62,7 @@ class _AddProductPageState extends State<AddProductPage> {
               ),
               FlatButton(
                 onPressed: () {
-                  //makePostProduct(name, price);
+                  makePostProduct(name, price);
                 },
                 child: Container(
                   height: 52.00,

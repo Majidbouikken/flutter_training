@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_app/controllers/productController.dart';
 import 'package:flutter_app/model/productModel.dart';
 import 'components/itemCard.dart';
 import 'addProductPage.dart';
@@ -24,6 +25,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          //makeGetRequestProductList();
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => AddProductPage(),
           ));
@@ -34,11 +36,19 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: Stack(
           children: <Widget>[
-            GridView.count(
-              crossAxisCount: 2,
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 88),
-              childAspectRatio: 140 / 188,
-              children: _itemBuilder(),
+            FutureBuilder(
+              future: makeGetRequestProductList(),
+              builder: (context, snapshot) {
+                return snapshot.data != null
+                    ? GridView.count(
+                        crossAxisCount: 2,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 24, vertical: 88),
+                        childAspectRatio: 140 / 188,
+                        children: _itemBuilder(snapshot.data),
+                      )
+                    : Center(child: CircularProgressIndicator());
+              },
             ),
 
             ClipRect(
@@ -111,64 +121,15 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  List<Widget> _itemBuilder() {
+  List<Widget> _itemBuilder(List<ProductModel> data) {
     List<Widget> _list = [];
-    data = <ProductModel>[
-      ProductModel(
-        name: 'Hubot Figure',
-        image: 'assets/img/product1.png',
-        price: 2000,
-        color: Color(0xFFFEFAC4),
-      ),
-      ProductModel(
-        name: 'Github Figure',
-        image: 'assets/img/product2.png',
-        price: 1400,
-        color: Color(0xFFD0FFE1),
-      ),
-      ProductModel(
-        name: 'Hack IT sticker pack',
-        image: 'assets/img/product5.png',
-        price: 180,
-        color: Color(0xFFFFD0EE),
-      ),
-      ProductModel(
-        name: 'CSE Hoodie',
-        image: 'assets/img/product3.png',
-        price: 2500,
-        color: Color(0xFFE8E9FF),
-      ),
-      ProductModel(
-        name: 'CSE Backpack',
-        image: 'assets/img/product4.png',
-        price: 1800,
-        color: Color(0xFFD0EEFF),
-      ),
-      ProductModel(
-        name: 'Flutter water bottle',
-        image: 'assets/img/product6.png',
-        price: 780,
-        color: Color(0xFFDFFEB9),
-      ),
-      ProductModel(
-        name: 'Hubot Figure',
-        image: 'assets/img/product1.png',
-        price: 2000,
-        color: Color(0xFFFED8B9),
-      ),
-      ProductModel(
-        name: 'Github Figure',
-        image: 'assets/img/product2.png',
-        price: 1400,
-        color: Color(0xFFECECEC),
-      ),
-    ];
+
     for (int i = 0; i < data.length; i++) {
       _list.add(ItemCard(
         name: data[i].name,
         image: data[i].image,
         price: data[i].price,
-        color: data[i].color,
+        color: Color(int.parse(data[i].color)),
       ));
     }
     return _list;
